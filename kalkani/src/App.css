@@ -1,0 +1,59 @@
+.App {
+  text-align: center;
+}
+/* .search {
+
+} */
+.autocomplete {
+  width: 100%;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  border: none;
+}
+.autocompleteItems {
+  text-align: left;
+  width: 1%;
+}
+.card-body {
+ border: none;
+}
+.arrowButton {
+  margin-right: 15px;
+}
+.textBox {
+  width: 20%;
+  border-radius: 5%;
+}
+.navigationButtion {
+  top: 50;
+  margin: 10px;
+}
+.container {
+  border: 5px solid black;  
+  padding: 50px;
+}
+.searchLabel {
+  margin: 30px 0px;
+}
+input {
+  margin-bottom: 30px;
+  width: 28%;
+  height: 40px;
+  /* border-radius: 10px; */
+  
+  border-end-end-radius: 10px;
+  border-top-right-radius: 10px;
+  border-left: none;
+  outline: none;
+}
+.sr {
+  border-radius: none;
+  border-right: none;
+  outline: none;
+    background: white;
+  /* width: 38px; */
+  height: 40px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
