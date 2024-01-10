@@ -1,3 +1,6 @@
+
+// in this file work for if user check first checkbox it show content from second div and and vice versa
+
 import React, { useState } from "react";
 import FormGroup from "@material-ui/core/FormGroup";
 import { Checkbox, FormControlLabel } from "@material-ui/core";
@@ -56,9 +59,9 @@ function Index() {
           label="checkbox 2"
         />
       </FormGroup>
-      <div id="one" style={{display:"none"}}>first div</div>
+      <div id="one" style={{display:"none"}}>first div content</div>
       <br />
-      <div id="two" style={{display:"none"}}>second div</div>
+      <div id="two" style={{display:"none"}}>second div content</div>
     </>
   );
 }

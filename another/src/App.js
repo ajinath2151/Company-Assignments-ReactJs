@@ -5,8 +5,8 @@ import Index from './credentek/Index';
 function App() {
   return (
     <>
-      {/* <Index /> */}
-      <FromChatgpt />
+      <Index />
+      {/* <FromChatgpt /> */}
       {/* <BootstrapUse /> */}
     </>
   );
