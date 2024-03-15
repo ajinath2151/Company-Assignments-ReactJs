@@ -1,72 +1,59 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react'
-
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-
-
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
-
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
+import axios from "axios";
+import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
 
 const DataTable = () => {
+  const [myData, setMyData] = useState();
 
-  const [myDataTable, setMyDataTable] = useState([]);
+  useEffect(() => {
+    axios
+      .get(
+        "https://gist.githubusercontent.com/telematum/7751eec667033ac8acd244542e464e18/raw/d4710c6fb54224a0bd316ecdc5246633aceefce5/todays.json"
+      )
+      .then((response) => {
+        console.log(response.data.appointments);
+        setMyData(response.data.appointments);
+      });
+  }, []);
 
-  useEffect(()=>{
-    axios.get("https://gist.githubusercontent.com/telematum/7751eec667033ac8acd244542e464e18/raw/d4710c6fb54224a0bd316ecdc5246633aceefce5/todays.json")
-    .then((response)=>{
-      setMyDataTable(response.data);
-      console.log(response.data);
-    })
-  },[])
   return (
-    <>
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell>PATIENTS</TableCell>
-            <TableCell align="right">DATE</TableCell>
-            <TableCell align="right">TIME</TableCell>
-            <TableCell align="right">DOCTOR</TableCell>
-            <TableCell align="right">INJURY</TableCell>
-            <TableCell align="right">ACTION</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow
-              key={row.name}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                {row.name}
-              </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right">{row.carbs}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
-            </TableRow>
+    <div>
+      <h2>Employee Data Table</h2>
+      <table border={1} width={"100%"}>
+        <th>
+          <tr>PATIENT</tr>
+        </th>
+        <th>
+          <tr>DATE</tr>
+        </th>
+        <th>
+          <tr>TIME</tr>
+        </th>
+        <th>
+          <tr>DOCTOR</tr>
+        </th>
+        <th>
+          <tr>INJURY</tr>
+        </th>
+        <th>
+          <tr>ACTION</tr>
+        </th>
+        <tbody>
+          {myData?.map((item, index) => (
+            <tr key={index} >
+              <td style={{padding:'8px'}}>{item.patient_name}</td>
+              <td>{item.appointment_date}</td>
+              <td>{item.appointment_time}</td>
+              <td>{item.doctor}</td>
+              <td>{item.injury}</td>
+              <td>{}</td>
+            </tr>
           ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
-    </>    
-  )
-}
+        </tbody>
+      </table>
+    </div>
+  );
+};
 
-export default DataTable
+export default DataTable;
