@@ -6,7 +6,7 @@ function App() {
   return (
     <div>
       {/* <DataTable /> */}
-      <EmployeeDataTable />
+      {/* <EmployeeDataTable /> */}
     </div>
   );
 }
