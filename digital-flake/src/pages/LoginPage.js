@@ -42,6 +42,7 @@ const LoginPage = () => {
   const [email, setEmail] = useState(""); // State variable to hold email address
   // useState for open dialog box on click of forget / forgot password
   const [open, setOpen] = useState(false);
+  
 
     // for open dialog box onClick of forgot Password
   const handleClickOpen = (e) =>{
@@ -78,13 +79,12 @@ const LoginPage = () => {
 
   const handleLogin = (event) => {
     event.preventDefault();
-    alert("Login");    
-    
+    alert("Login");        
   }
 
   return (
     // all data of LoginPage will be return / available under this container
-    <Container style={{marginTop:50}}>
+    <Container id="myid" style={{marginTop:50}}>
       <Fragment>
         {/* define paper size for show data */}
         <Paper
@@ -178,7 +178,7 @@ const LoginPage = () => {
               </Dialog>
             </FormControl>
             {/* login button of Login Page and click handleLogin event on click*/}
-            <Button style={{marginTop:60, background:'purple'}} variant="contained" onClick={handleLogin}>Log In</Button>
+            <Button  style={{marginTop:60, background:'purple'}} variant="contained" onClick={handleLogin}>Log In</Button>
             
           </FormControl>          
         </Paper>
