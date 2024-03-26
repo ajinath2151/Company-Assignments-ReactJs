@@ -17,11 +17,9 @@ import {
   Typography,
 } from "@mui/material";
 import digitalFlake from "../images/logo/digitalFlake.png";
-import BI from "../images/background/login.png";
-import styled from "@emotion/styled";
 import TextField from "@mui/material/TextField";
-import { Password, Visibility, VisibilityOff } from "@mui/icons-material";
-import AdminPage from "./AdminNavbar";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
+
 
 // Styled Container for div style
 const TopDiv = styled.div({
@@ -165,8 +163,7 @@ const LoginPage = () => {
                     label="Email address"
                     fullWidth
                     id="email"
-                    name="email"
-                    label="Email Address"
+                    name="email"                    
                     type="email"
                     required
                   />
