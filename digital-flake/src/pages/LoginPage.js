@@ -21,7 +21,7 @@ import BI from "../images/background/login.png";
 import styled from "@emotion/styled";
 import TextField from "@mui/material/TextField";
 import { Password, Visibility, VisibilityOff } from "@mui/icons-material";
-import AdminPage from "./AdminPage";
+import AdminPage from "./AdminNavbar";
 
 // Styled Container for div style
 const TopDiv = styled.div({
