@@ -17,7 +17,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 const AdminPage = () => {
   return (
-    <div>
+    <>
       <Container
         sx={{
           height: "86vh",
@@ -35,7 +35,7 @@ const AdminPage = () => {
           <Typography variant="body1">Welcome to Digitalflake Admin</Typography>
         </Box>
       </Container>
-    </div>
+    </>
   );
 };
 
