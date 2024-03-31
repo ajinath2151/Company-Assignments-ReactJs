@@ -48,7 +48,7 @@ const Leftbar = () => {
 
   return (
     <div>
-      <Container sx={{ height: "86vh", backgroundColor: "red" }}>
+      <Container sx={{ height: "100vh", backgroundColor: "red" }}>
         <Box>
           <List>
             <ListItemButton onClick={handleHomeClick}>
