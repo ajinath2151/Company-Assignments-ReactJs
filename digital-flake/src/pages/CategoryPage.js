@@ -1,5 +1,5 @@
-import { GridView } from "@mui/icons-material";
-import { Box, Button, Container, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from "@mui/material";
+import { Delete, Edit, EditCalendar, EditNote, GridView } from "@mui/icons-material";
+import { Box, Button, Container, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, tableCellClasses } from "@mui/material";
 import React, { Fragment, useEffect, useState } from "react";
 import { styled, alpha } from "@mui/material/styles";
 import SearchIcon from "@mui/icons-material/Search";
@@ -63,6 +63,28 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
+//this one used for change table columns background and font size of table data
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  [`&.${tableCellClasses.head}`]: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
+  },
+  [`&.${tableCellClasses.body}`]: {
+    fontSize: 14,
+  },
+}));
+
+// give gray background for odd rows of fetched data 
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
+  '&:nth-of-type(odd)': {
+    // backgroundColor: theme.palette.action.hover,
+     backgroundColor: '#eaeaea',
+  },
+  // hide last border
+  '&:last-child td, &:last-child th': {
+    border: 0,
+  },
+}));
 
 
 const CategoryPage = () => {
@@ -128,13 +150,14 @@ useEffect(()=>{
 
           {/* category table for display rows and columns form api's */}
           <TableContainer component={Paper}>
-            <Table sx={{minWidth:700}} aria-label={"customised table"}>
+            {/* if remove minWidth then it's fully responsive i.e. showing full content in next line of same rwo */}
+            <Table sx={{minWidth:500}} aria-label={"customised table"}>
               <TableHead>
-                <TableRow>
+                <StyledTableRow>
                   {columns?.map((column)=>(
-                    <TableCell key={column.id}>{column.name}</TableCell>
+                    <StyledTableCell key={column.id}>{column.name}</StyledTableCell>
                   ))}
-                </TableRow>
+                </StyledTableRow>
               </TableHead>
               <TableBody>
                 {/* {rows?.map((row)=>(
@@ -142,16 +165,21 @@ useEffect(()=>{
                 ))} */}
                 {rows?.map((row, index)=>{
                   return (
-                    <TableRow key={index}>
+                    <>
+                    <StyledTableRow key={index}>
                       {columns?.map((column,index)=>{
                         let value = row[column.id];
                         return (
-                          <TableCell key={value}>
-                            {value}
-                          </TableCell>
+                          <StyledTableCell key={value}>
+                            {value} 
+                          </StyledTableCell>
                         )
                       })}
-                    </TableRow>
+                      <div style={{display:'flex', padding:'5px 0px', margin:'5px 0px'}}>
+                      <Edit sx={{marginRight:2}} /> <Delete sx={{marginRight:2}}/>
+                      </div>
+                    </StyledTableRow>
+                    </>
                   )
                     })}
               </TableBody>
