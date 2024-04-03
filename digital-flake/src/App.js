@@ -27,13 +27,13 @@ function App() {
       <Grid container>
         <Grid item xs={2} md={3}>
                                                                         
-          <Item sx={{ backgroundColor: "red", position:'fixed', width:'25%', top:{xs:'13%', md:'69px'},}}>
+          <Item sx={{ backgroundColor: "red", position:'fixed', width:{md:'25%',xs:'19%'},}}>
             <Leftbar />
           </Item>
         </Grid>
         <Grid item xs={10} md={9}>
           <Item sx={{ backgroundColor: "yellow" }}>
-            <AdminPage />            
+            {/* <AdminPage />             */}
           </Item>
           <Item sx={{ backgroundColor: "#95F9EA" }}>
             <CategoryPage />

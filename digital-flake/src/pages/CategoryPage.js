@@ -1,13 +1,29 @@
-import { Delete, Edit, EditCalendar, EditNote, GridView } from "@mui/icons-material";
-import { Box, Button, Container, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, tableCellClasses } from "@mui/material";
+import {
+  Delete,
+  Edit,
+  EditCalendar,
+  EditNote,
+  GridView,
+} from "@mui/icons-material";
+import {
+  Box,
+  Button,
+  Container,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Typography,
+  tableCellClasses,
+} from "@mui/material";
 import React, { Fragment, useEffect, useState } from "react";
 import { styled, alpha } from "@mui/material/styles";
 import SearchIcon from "@mui/icons-material/Search";
 import InputBase from "@mui/material/InputBase";
 import axios from "axios";
-
-
-
 
 // search input of top
 const Search = styled("div")(({ theme }) => ({
@@ -74,44 +90,53 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   },
 }));
 
-// give gray background for odd rows of fetched data 
+// give gray background for odd rows of fetched data
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  '&:nth-of-type(odd)': {
+  "&:nth-of-type(odd)": {
     // backgroundColor: theme.palette.action.hover,
-     backgroundColor: '#eaeaea',
+    backgroundColor: "#eaeaea",
   },
   // hide last border
-  '&:last-child td, &:last-child th': {
+  "&:last-child td, &:last-child th": {
     border: 0,
   },
 }));
 
-
 const CategoryPage = () => {
-
-// this useState for store and update table data  
+  // this useState for store and update table data
   const [rows, setRows] = useState([]);
   // creating columns
-  const columns = [
-    {id:"userId", name:"User Id"},
-    {id:'id', name:'ID'},
-    {id:'title', name:'Title'},
-    {id:'body', name:'Body'}
-]
-// useEffect for fetch data to set as table data from api
-useEffect(()=>{
-  axios.get("https://jsonplaceholder.typicode.com/posts")
-  .then((response)=>{
-    setRows(response.data);
-    console.log([response.data]);
-  })
-},[])
 
-  
+  const [filterData, setFilterData] = useState([]);
+
+  // for search data
+  const handleFilter = (value) => {
+    const res = filterData.filter( f => f.body.toLowerCase().includes(value));
+    setRows(res)
+    // setFilterData(res);
+  };
+  // for columns
+  const columns = [
+    { id: "userId", name: "User Id" },
+    { id: "id", name: "ID" },
+    { id: "title", name: "Title" },
+    { id: "body", name: "Body" },
+  ];
+  // useEffect for fetch data to set as table data from api
+  useEffect(() => {
+    axios.get("https://jsonplaceholder.typicode.com/posts").then((response) => {
+      setRows(response.data);
+      console.log([response.data]);
+      setFilterData(response.data);
+    });
+  }, []);
+
   return (
     <>
       {/* main container for categoryPage */}
-      <Container>
+      <Container sx={{
+        marginTop:{md:'69', xs:'65px'},
+      }}>
         {/* main box container for top div data logo / category text , input field with search and add new */}
         <Box
           sx={{
@@ -138,8 +163,9 @@ useEffect(()=>{
               <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase
-              placeholder="Search…"
+              placeholder="Search in body..."
               inputProps={{ "aria-label": "search" }}
+              onChange={(e) => handleFilter(e.target.value)}
             />
           </Search>
           {/* add new category button */}
@@ -148,44 +174,53 @@ useEffect(()=>{
           </Button>
         </Box>
 
-          {/* category table for display rows and columns form api's */}
-          <TableContainer component={Paper}>
-            {/* if remove minWidth then it's fully responsive i.e. showing full content in next line of same rwo */}
-            <Table sx={{minWidth:500}} aria-label={"customised table"}>
-              <TableHead>
-                <StyledTableRow>
-                  {columns?.map((column)=>(
-                    <StyledTableCell key={column.id}>{column.name}</StyledTableCell>
-                  ))}
-                </StyledTableRow>
-              </TableHead>
-              <TableBody>
-                {/* {rows?.map((row)=>(
+        {/* category table for display rows and columns form api's */}
+        <TableContainer component={Paper}>
+          {/* if remove minWidth then it's fully responsive i.e. showing full content in next line of same rwo */}
+          <Table sx={{ minWidth: 500 }} aria-label={"customised table"}>
+            <TableHead>
+              <StyledTableRow>
+                {columns?.map((column) => (
+                  <StyledTableCell key={column.id}>
+                    {column.name}
+                  </StyledTableCell>
+                ))}
+              </StyledTableRow>
+            </TableHead>
+            <TableBody>
+              {/* {rows?.map((row)=>(
                   <TableCell>{row.id}</TableCell>
                 ))} */}
-                {rows?.map((row, index)=>{
-                  return (
-                    <>
+              {rows?.map((row, index) => {
+                return (
+                  <>
                     <StyledTableRow key={index}>
-                      {columns?.map((column,index)=>{
+                      {columns?.map((column, index) => {
                         let value = row[column.id];
                         return (
-                          <StyledTableCell key={value}>
-                            {value} 
-                          </StyledTableCell>
-                        )
+                          <StyledTableCell key={value}>{value}</StyledTableCell>
+                        );
                       })}
-                      <div style={{display:'flex', padding:'5px 0px', margin:'5px 0px'}}>
-                      <Edit sx={{marginRight:2}} /> <Delete sx={{marginRight:2}}/>
+                      <div
+                        style={{
+                          display: "flex",
+                          padding: "5px 0px",
+                          margin: "5px 0px",
+                        }}
+                      >
+                        <Edit sx={{ marginRight: 2 }} />{" "}
+                        <Delete sx={{ marginRight: 2 }} />
                       </div>
                     </StyledTableRow>
-                    </>
-                  )
-                    })}
-              </TableBody>
-            </Table>
-          </TableContainer>
-        
+                  </>
+                );
+              })}
+              {/* {rows.map((d, i) => (
+                <div kay={i}>{d.title}</div>
+              ))} */}
+            </TableBody>
+          </Table>
+        </TableContainer>
       </Container>
     </>
   );
