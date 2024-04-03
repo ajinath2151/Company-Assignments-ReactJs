@@ -10,9 +10,12 @@ const Image = styled('img')({
 })
 
 //for menu items
-const pages = ['Product', 'pricing', 'Block'];
+const pages = ['Product', 'pricing', 'Block', 'services'];
 // for user profile
 const settings = ['profile', 'account', 'Dashboard', 'Logout']
+
+
+
 const Navbar = () => {
 
   // usestate for menu items
@@ -42,7 +45,7 @@ const Navbar = () => {
   return (
     <>
     {/* main app bar for admin page */}
-    <AppBar position='static'>
+    <AppBar sx={{position:'fixed'}}>
       <Container maxWidth={'xl'}>
         <Toolbar disableGutters>
           {/* <img src={digitalFlake} alt="digital flake logo" /> */}

@@ -2,6 +2,7 @@ import "./App.css";
 import Navbar from "./pages/Navbar";
 import Leftbar from "./pages/Leftbar";
 import CategoryPage from "./pages/CategoryPage";
+import LoginPage from "./pages/LoginPage";
 import AdminPage from "./pages/AdminPage";
 import { Grid, Paper } from "@mui/material";
 import styled from "styled-components";
@@ -25,13 +26,14 @@ function App() {
 
       <Grid container>
         <Grid item xs={2} md={3}>
-          <Item sx={{ backgroundColor: "red" }}>
+                                                                        
+          <Item sx={{ backgroundColor: "red", position:'fixed', width:'25%', top:{xs:'13%', md:'69px'},}}>
             <Leftbar />
           </Item>
         </Grid>
         <Grid item xs={10} md={9}>
           <Item sx={{ backgroundColor: "yellow" }}>
-            {/* <AdminPage />             */}
+            <AdminPage />            
           </Item>
           <Item sx={{ backgroundColor: "#95F9EA" }}>
             <CategoryPage />
