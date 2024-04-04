@@ -24,6 +24,7 @@ import { styled, alpha } from "@mui/material/styles";
 import SearchIcon from "@mui/icons-material/Search";
 import InputBase from "@mui/material/InputBase";
 import axios from "axios";
+import AddNewCategory from "./AddNewCategory";
 
 // search input of top
 const Search = styled("div")(({ theme }) => ({
@@ -106,8 +107,11 @@ const CategoryPage = () => {
   // this useState for store and update table data
   const [rows, setRows] = useState([]);
   // creating columns
-
+  // for filter only searched data to display only search data in table
   const [filterData, setFilterData] = useState([]);
+
+  // for showing the AddNewCategory component
+  const [show, setShow] = useState(true);
 
   // for search data
   const handleFilter = (value) => {
@@ -131,9 +135,19 @@ const CategoryPage = () => {
     });
   }, []);
 
+  // for set value of setShow of showing the AddNewCategory component
+  const handleNewCategory = () => {    
+    if (show === true) {
+      setShow(false)
+    }
+    else {
+      setShow(true)
+    }
+  }
   return (
     <>
       {/* main container for categoryPage */}
+      { show ? (
       <Container sx={{
         marginTop:{md:'69', xs:'65px'},
       }}>
@@ -168,8 +182,8 @@ const CategoryPage = () => {
               onChange={(e) => handleFilter(e.target.value)}
             />
           </Search>
-          {/* add new category button */}
-          <Button variant="contained" sx={{ marginRight: "20px" }}>
+          {/* AddNewCategory button */}
+          <Button variant="contained" sx={{ marginRight: "20px" }} onClick={handleNewCategory}>
             Add New
           </Button>
         </Box>
@@ -222,6 +236,7 @@ const CategoryPage = () => {
           </Table>
         </TableContainer>
       </Container>
+      ) : <AddNewCategory />}
     </>
   );
 };
