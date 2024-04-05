@@ -1,38 +1,43 @@
 import React, { useState } from "react";
 import CategoryPage from "./CategoryPage";
 import { Box, Button, Container, TextField, Typography } from "@mui/material";
-import { ArrowBack, KeyboardBackspace } from "@mui/icons-material";
-
+import { KeyboardBackspace } from "@mui/icons-material";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
-
-
+//main function / component
 const AddNewCategory = () => {
+  //for to decide this page should show or not
   const [show, setShow] = useState(true);
-  const [age, setAge] = React.useState("");
+  //used for category states completed or not (select)
+  const [complete, setComplete] = React.useState("");
 
+  // onchange of select set value of select (combobox)
   const handleChange = (event) => {
-    setAge(event.target.value);
+    setComplete(event.target.value);
   };
 
+  //to decide this page should show or not
   const handleCategory = () => {
     setShow(!show);
   };
+  //onClick of save just give dummy message to user
   const handleSave = () => {
     alert("dummy message for data saved........");
-  }
+  };
 
+  //main return function
   return (
     <>
+      {/* show decide this component should show or not and main container */}
       {show ? (
         <Container
           sx={{
-            marginTop: { md: "69px", xs: "64px"},
+            marginTop: { md: "69px", xs: "64px" },
             backgroundColor: "lightcoral",
-            height: '100vh',            
+            height: "100vh",
           }}
         >
           {/* for top / back logo and add Category */}
@@ -54,21 +59,20 @@ const AddNewCategory = () => {
                 required
                 id="outlined-required"
                 label="Id"
-                placeholder="Enter Id"                
-                sx={{ minWidth: "30%", marginRight: 2  }}
+                placeholder="Enter Id"
+                sx={{ minWidth: "30%", marginRight: 2 }}
               />
               <FormControl sx={{ minWidth: "30%" }}>
-                <InputLabel id="demo-simple-select-label">Age</InputLabel>
+                <InputLabel id="demo-simple-select-label">Status</InputLabel>
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
-                  value={age}
-                  label="Age"
-                  onChange={handleChange}                  
+                  value={complete}
+                  label="Status"
+                  onChange={handleChange}
                 >
-                  <MenuItem value={10}>Ten</MenuItem>
-                  <MenuItem value={20}>Twenty</MenuItem>
-                  <MenuItem value={30}>Thirty</MenuItem>
+                  <MenuItem value={"Complete"}>Completed</MenuItem>
+                  <MenuItem value={"InProcess"}>InProcess</MenuItem>
                 </Select>
               </FormControl>
             </Box>
@@ -79,14 +83,44 @@ const AddNewCategory = () => {
                 multiline
                 rows={2}
                 placeholder="Body Content"
-                sx={{ minWidth: "30%", marginTop:3 }}
+                sx={{ minWidth: "30%", marginTop: 3 }}
               />
             </Box>
           </FormControl>
-            <Box sx={{margin:'0px 10px', position:'absolute', bottom:10, right:10}}>
-              <Button variant="outlined" sx={{width:{md:179, xs:150}, borderRadius:'22px', height:{md:'48px', sx:'28px'}, marginRight:5}} onClick={handleCategory}>Cancel</Button>
-              <Button variant="outlined" sx={{width:{md:179, xs:150}, borderRadius:'22px', height:{md:'48px', sx:'28px'}, background:'purple'}} onClick={handleSave}>Save</Button>
-            </Box>
+          {/* bottom button cancel and save */}
+          <Box
+            sx={{
+              margin: "0px 10px",
+              position: "absolute",
+              bottom: 10,
+              right: 10,
+            }}
+          >
+            <Button
+              variant="outlined"
+              sx={{
+                width: { md: 179, xs: 150 },
+                borderRadius: "22px",
+                height: { md: "48px", sx: "28px" },
+                marginRight: 5,
+              }}
+              onClick={handleCategory}
+            >
+              Cancel
+            </Button>
+            <Button
+              variant="outlined"
+              sx={{
+                width: { md: 179, xs: 150 },
+                borderRadius: "22px",
+                height: { md: "48px", sx: "28px" },
+                background: "purple",
+              }}
+              onClick={handleSave}
+            >
+              Save
+            </Button>
+          </Box>
         </Container>
       ) : (
         <CategoryPage />

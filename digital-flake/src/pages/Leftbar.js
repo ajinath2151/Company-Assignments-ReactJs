@@ -2,13 +2,10 @@ import {
   Box,
   Collapse,
   Container,
-  Grid,
   List,
   ListItemButton,
   ListItemIcon,
   ListItemText,
-  Paper,
-  styled,
 } from "@mui/material";
 import React from "react";
 import {
@@ -21,36 +18,46 @@ import {
   RssFeed,
   StarBorder,
 } from "@mui/icons-material";
-import AdminPage from "./AdminPage";
 
-const Item = styled(Paper)(({ theme }) => ({
-  // backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-  // ...theme.typography.body2,
-  // padding: theme.spacing(1),
-  // textAlign: "center",
-  // color: theme.palette.text.secondary,
-}));
-
+// main component function
 const Leftbar = () => {
+  //for open / close list item home
   const [homeOpen, setHomeOpen] = React.useState(false);
+  //for open / close list item category
   const [categoryOpen, setCategoryOpen] = React.useState(false);
+  //for open / close list item product
   const [productOpen, setProductOpen] = React.useState(false);
 
+  //for toggle home list item value
   const handleHomeClick = () => {
     setHomeOpen(!homeOpen);
   };
+  //for toggle category list item value
   const handleCategoryClick = () => {
     setCategoryOpen(!categoryOpen);
   };
+  //for toggle product list item value
   const handleProductClick = () => {
     setProductOpen(!productOpen);
   };
 
+  //main return of this component
   return (
     <div>
-      <Container sx={{ height: "100vh", backgroundColor: "red", display:'flex', position:'relative', top:{xs:'69px', md:'69px'}, }}>
+      {/* main container */}
+      <Container
+        sx={{
+          height: "100vh",
+          backgroundColor: "red",
+          display: "flex",
+          position: "relative",
+          top: { xs: "69px", md: "69px" },
+        }}
+      >
+        {/* all i.e. home category and product list items with their logo and inner content */}
         <Box>
           <List>
+            {/* home list item */}
             <ListItemButton onClick={handleHomeClick}>
               <ListItemIcon>
                 <Home />
@@ -75,6 +82,7 @@ const Leftbar = () => {
                 </ListItemButton>
               </List>
             </Collapse>
+            {/* category list item */}
             <ListItemButton onClick={handleCategoryClick}>
               <ListItemIcon>
                 <GridView />
@@ -98,6 +106,7 @@ const Leftbar = () => {
                 </ListItemButton>
               </List>
             </Collapse>
+            {/* product list item */}
             <ListItemButton onClick={handleProductClick}>
               <ListItemIcon>
                 <Inbox />

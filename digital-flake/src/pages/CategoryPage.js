@@ -1,8 +1,6 @@
 import {
   Delete,
   Edit,
-  EditCalendar,
-  EditNote,
   GridView,
 } from "@mui/icons-material";
 import {
@@ -26,7 +24,7 @@ import InputBase from "@mui/material/InputBase";
 import axios from "axios";
 import AddNewCategory from "./AddNewCategory";
 
-// search input of top
+//search input of top
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
@@ -70,7 +68,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
         width: "40ch",
       },
     },
-    // responsive screen small than md
+    // responsive screen small(sm) than medium(md)
     [theme.breakpoints.down("md")]: {
       width: "15ch",
       "&:focus": {
@@ -103,23 +101,24 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
+// main component function
 const CategoryPage = () => {
   // this useState for store and update table data
   const [rows, setRows] = useState([]);
-  // creating columns
+
   // for filter only searched data to display only search data in table
   const [filterData, setFilterData] = useState([]);
 
   // for showing the AddNewCategory component
   const [show, setShow] = useState(true);
 
-  // for search data
+  // for search data according to the filter
   const handleFilter = (value) => {
-    const res = filterData.filter( f => f.body.toLowerCase().includes(value));
-    setRows(res)
-    // setFilterData(res);
+    const res = filterData.filter((f) => f.body.toLowerCase().includes(value));
+    // according filter result change rows values
+    setRows(res);
   };
-  // for columns
+  // for columns name for display and id for fetching data from api
   const columns = [
     { id: "userId", name: "User Id" },
     { id: "id", name: "ID" },
@@ -131,112 +130,124 @@ const CategoryPage = () => {
     axios.get("https://jsonplaceholder.typicode.com/posts").then((response) => {
       setRows(response.data);
       console.log([response.data]);
+      //all data set to setFilterData function
       setFilterData(response.data);
     });
   }, []);
 
   // for set value of setShow of showing the AddNewCategory component
-  const handleNewCategory = () => {    
+  const handleNewCategory = () => {
     if (show === true) {
-      setShow(false)
+      setShow(false);
+    } else {
+      setShow(true);
     }
-    else {
-      setShow(true)
-    }
-  }
+  };
+
+  //main return function
   return (
     <>
-      {/* main container for categoryPage */}
-      { show ? (
-      <Container sx={{
-        marginTop:{md:'69', xs:'65px'},
-      }}>
-        {/* main box container for top div data logo / category text , input field with search and add new */}
-        <Box
+      {/* main container for categoryPage and which page should display use show for this */}
+      {show ? (
+        <Container
           sx={{
-            display: "flex",
-            alignItems: "center",
-            paddingTop: 2,
-            justifyContent: "space-between",
-            paddingBottom: 2,
+            marginTop: { md: "69", xs: "65px" },
           }}
         >
-          {/* subdive for making cateory logo and text as one thing , to settle for justifyContent property */}
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <GridView />
-            <Typography
-              sx={{ fontSize: "20px", marginLeft: "20px" }}
-              variant="body1"
+          {/* main box container for top div data logo / category text , input field with search and add new */}
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              paddingTop: 2,
+              justifyContent: "space-between",
+              paddingBottom: 2,
+            }}
+          >
+            {/* subdive for making cateory logo and text as one thing , to settle for justifyContent property */}
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <GridView />
+              <Typography
+                sx={{ fontSize: "20px", marginLeft: "20px" }}
+                variant="body1"
+              >
+                <strong>Category</strong>
+              </Typography>
+            </div>
+            {/* top search bar */}
+            <Search>
+              <SearchIconWrapper>
+                <SearchIcon />
+              </SearchIconWrapper>
+              <StyledInputBase
+                placeholder="Find in body..."
+                inputProps={{ "aria-label": "search" }}
+                onChange={(e) => handleFilter(e.target.value)}
+              />
+            </Search>
+            {/* AddNewCategory button */}
+            <Button
+              variant="contained"
+              sx={{ marginRight: "20px" }}
+              onClick={handleNewCategory}
             >
-              <strong>Category</strong>
-            </Typography>
-          </div>
-          {/* top search bar */}
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search in body..."
-              inputProps={{ "aria-label": "search" }}
-              onChange={(e) => handleFilter(e.target.value)}
-            />
-          </Search>
-          {/* AddNewCategory button */}
-          <Button variant="contained" sx={{ marginRight: "20px" }} onClick={handleNewCategory}>
-            Add New
-          </Button>
-        </Box>
+              Add New
+            </Button>
+          </Box>
 
-        {/* category table for display rows and columns form api's */}
-        <TableContainer component={Paper}>
-          {/* if remove minWidth then it's fully responsive i.e. showing full content in next line of same rwo */}
-          <Table sx={{ minWidth: 500 }} aria-label={"customised table"}>
-            <TableHead>
-              <StyledTableRow>
-                {columns?.map((column) => (
-                  <StyledTableCell key={column.id}>
-                    {column.name}
-                  </StyledTableCell>
-                ))}
-              </StyledTableRow>
-            </TableHead>
-            <TableBody>
-              {/* {rows?.map((row)=>(
+          {/* category table for display rows and columns form api's */}
+          <TableContainer component={Paper}>
+            {/* if remove minWidth then it's fully responsive i.e. showing full content in next line of same rwo */}
+            <Table sx={{ minWidth: 500 }} aria-label={"customised table"}>
+              <TableHead>
+                <StyledTableRow>
+                  {columns?.map((column) => (
+                    <StyledTableCell key={column.id}>
+                      {column.name}
+                    </StyledTableCell>
+                  ))}
+                </StyledTableRow>
+              </TableHead>
+              <TableBody>
+                {/* {rows?.map((row)=>(
                   <TableCell>{row.id}</TableCell>
                 ))} */}
-              {rows?.map((row, index) => {
-                return (
-                  <>
-                    <StyledTableRow key={index}>
-                      {columns?.map((column, index) => {
-                        let value = row[column.id];
-                        return (
-                          <StyledTableCell key={value}>{value}</StyledTableCell>
-                        );
-                      })}
-                      <div
-                        style={{
-                          display: "flex",
-                          padding: "5px 0px",
-                          margin: "5px 0px",
-                        }}
-                      >
-                        <Edit sx={{ marginRight: 2 }} />{" "}
-                        <Delete sx={{ marginRight: 2 }} />
-                      </div>
-                    </StyledTableRow>
-                  </>
-                );
-              })}
-              {/* {rows.map((d, i) => (
+                {rows?.map((row, index) => {
+                  return (
+                    <>
+                      <StyledTableRow key={index}>
+                        {columns?.map((column, index) => {
+                          let value = row[column.id];
+                          return (
+                            <StyledTableCell key={value}>
+                              {value}
+                            </StyledTableCell>
+                          );
+                        })}
+                        <div
+                          style={{
+                            display: "flex",
+                            padding: "5px 0px",
+                            margin: "5px 0px",
+                          }}
+                        >
+                          <Edit sx={{ marginRight: 2 }} />{" "}
+                          <Delete sx={{ marginRight: 2 }} />
+                        </div>
+                      </StyledTableRow>
+                    </>
+                  );
+                })}
+                {/* {rows.map((d, i) => (
                 <div kay={i}>{d.title}</div>
               ))} */}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </Container>
-      ) : <AddNewCategory />}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </Container>
+      ) : (
+        <AddNewCategory />
+      )}
     </>
   );
 };

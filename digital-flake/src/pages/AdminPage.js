@@ -1,32 +1,31 @@
-import { Box, Container, Grid, Paper, Typography } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
 import React from "react";
 import styled from "styled-components";
 import digitalFlake from "../images/logo/digitalFlake.png";
 
+// custom image for company logo
 const Image = styled("img")({
   width: "30px",
   height: "30px",
 });
 
-const Item = styled(Paper)(({ theme }) => ({
-  textAlign: "center",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-}));
-
+//main function or component
 const AdminPage = () => {
+  //main return function
   return (
+    // jsx element wrapper
     <>
+      {/* main container */}
       <Container
         sx={{
-          height: "86vh",
+          height: "100vh",
           backgroundColor: "yellow",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
         }}
       >
+        {/* box container for content */}
         <Box textAlign="center">
           <Image src={digitalFlake} alt="digital flake logo" />
           <Typography variant="h3">
