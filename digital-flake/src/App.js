@@ -12,8 +12,8 @@ const Item = styled(Paper)(({ theme }) => ({}));
 function App() {
   return (
     <>    
-      {/* <LoginPage /> */}
-      <Navbar />
+      <LoginPage />
+      {/* <Navbar /> */}
       {/* for all pages of dashboard use grid system / container and maintain specs in window */}
       <Grid container>
         <Grid item xs={2} md={3}>
@@ -24,7 +24,7 @@ function App() {
               width: { md: "25%", xs: "19%" },
             }}
           >
-            <Leftbar />
+            {/* <Leftbar /> */}
           </Item>
         </Grid>
         <Grid item xs={10} md={9}>
@@ -32,7 +32,7 @@ function App() {
             {/* <AdminPage /> */}
           </Item>
           <Item sx={{ backgroundColor: "#95F9EA" }}>
-            <CategoryPage />
+            {/* <CategoryPage /> */}
           </Item>
         </Grid>
       </Grid>

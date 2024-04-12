@@ -1,8 +1,4 @@
-import {
-  Delete,
-  Edit,
-  GridView,
-} from "@mui/icons-material";
+import { Delete, Edit, GridView } from "@mui/icons-material";
 import {
   Box,
   Button,
@@ -23,6 +19,8 @@ import SearchIcon from "@mui/icons-material/Search";
 import InputBase from "@mui/material/InputBase";
 import axios from "axios";
 import AddNewCategory from "./AddNewCategory";
+// for shortcut keys
+// import { useHotkeys, HotkeysProvider } from "react-hotkeys-hook";
 
 //search input of top
 const Search = styled("div")(({ theme }) => ({
@@ -101,6 +99,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
+
 // main component function
 const CategoryPage = () => {
   // this useState for store and update table data
@@ -111,6 +110,9 @@ const CategoryPage = () => {
 
   // for showing the AddNewCategory component
   const [show, setShow] = useState(true);
+
+  // for shortcut keys
+  // const [settingsCount, setSettingsCount] = useState(0);
 
   // for search data according to the filter
   const handleFilter = (value) => {
@@ -143,6 +145,17 @@ const CategoryPage = () => {
       setShow(true);
     }
   };
+// for shortcut keys
+  // useHotkeys(
+  //   "ctrl+s",
+  //   (event) => {
+  //     event.preventDefault();
+  //     setSettingsCount((prevCount) => prevCount + 1);
+  //   },
+  //   {
+  //     scopes: ["settings"],
+  //   }
+  // );
 
   //main return function
   return (
@@ -183,6 +196,7 @@ const CategoryPage = () => {
                 placeholder="Find in body..."
                 inputProps={{ "aria-label": "search" }}
                 onChange={(e) => handleFilter(e.target.value)}
+                id="topSearch"
               />
             </Search>
             {/* AddNewCategory button */}
@@ -248,6 +262,10 @@ const CategoryPage = () => {
       ) : (
         <AddNewCategory />
       )}
+      {/* for shortcut keys */}
+      {/* <HotkeysProvider>
+        <div>Settings have been saved {settingsCount} times.</div>
+      </HotkeysProvider> */}
     </>
   );
 };

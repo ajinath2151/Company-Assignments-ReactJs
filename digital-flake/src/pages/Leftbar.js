@@ -18,6 +18,7 @@ import {
   RssFeed,
   StarBorder,
 } from "@mui/icons-material";
+import CategoryPage from "./CategoryPage";
 
 // main component function
 const Leftbar = () => {
@@ -30,7 +31,7 @@ const Leftbar = () => {
 
   //for toggle home list item value
   const handleHomeClick = () => {
-    setHomeOpen(!homeOpen);
+    setHomeOpen(!homeOpen);        
   };
   //for toggle category list item value
   const handleCategoryClick = () => {
