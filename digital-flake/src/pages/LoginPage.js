@@ -22,6 +22,13 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import styled from "styled-components";
 import "./LoginPage.css";
 
+import Leftbar from "./Leftbar";
+import AdminPage from "./AdminPage";
+import CategoryPage from "./CategoryPage";
+import Navbar from "./Navbar";
+import { Grid } from "@mui/material";
+const Item = styled(Paper)(({ theme }) => ({}));
+
 // Styled Container for div style
 const TopDiv = styled.div({
   display: "flex",
@@ -40,6 +47,9 @@ const LoginPage = () => {
   const [email, setEmail] = useState(""); // State variable to hold email address
   // useState for open dialog box on click of forget / forgot password
   const [open, setOpen] = useState(false);
+
+  // for showing the AddNewCategory component
+  const [show, setShow] = useState(true);
 
   // for open dialog box onClick of forgot Password
   const handleClickOpen = (e) => {
@@ -76,158 +86,192 @@ const LoginPage = () => {
 
   const handleLogin = (event) => {
     event.preventDefault();
+
     const emailValue = document.getElementById("emailIdLoginPage").value;
     const passwordValue = document.getElementById("passwordLoginPage").value;
-  
+
     if (!emailValue || !passwordValue) {
       alert("Please fill in both email and password fields.");
     } else {
-      alert("Login");
       // Proceed with login logic
+      alert("Login");
+
+      if (show === true) {
+        setShow(false);
+      } else {
+        setShow(true);
+      }
     }
   };
-  
 
   return (
-    // all data of LoginPage will be return / available under this container
-    <Container id="myid" style={{ marginTop: 50 }}>
-      <Fragment>
-        {/* define paper size for show data */}
-        <Paper
-          style={{
-            height: 500,
-            width: 400,
-            border: "2px solid black",
-            display: "flex",
-            justifyContent: "center",
-          }}
-        >
-          {/* inside FormControl having all controls of form like TextField label and all */}
-          <FormControl>
-            {/* <FormControl style={{border:'1px solid black', height:'250px'}}> */}
-            {/* the content above textfield is in top div */}
-            <TopDiv>
-              <img src={digitalFlake} alt="company logoImage" />
-              <Typography sx={{ textAlign: "center" }} variant="h3">
-                <strong>Digital</strong>flake
-              </Typography>
-              <Typography sx={{ textAlign: "center" }} variant="h5">
-                Welcome to Digitalflake Admin
-              </Typography>
-            </TopDiv>
-            {/* ./ the content above textfield is in top div */}
-
-            {/* email id textfield LoginPage */}
-            <TextField
-              id="emailIdLoginPage"
-              required
-              label="Email ID"
-              name="email"
-              type="email"
-              autoComplete="current-password"
-              style={{ marginTop: 20, marginBottom: 20 }}
-            />             
-            {/* password textfield LoginPage         */}
-            <FormControl variant="outlined">
-              <InputLabel htmlFor="outlined-adornment-password" required>
-                Password
-              </InputLabel>
-              <OutlinedInput
-                id="passwordLoginPage"
-                required
-                type={showPassword ? "text" : "password"}
-                endAdornment={
-                  <InputAdornment position="end">
-                    <IconButton
-                      aria-label="toggle password visibility"
-                      onClick={handleClickShowPassword}
-                      onMouseDown={handleMouseDownPassword}
-                      edge="end"
-                    >
-                      {showPassword ? <VisibilityOff /> : <Visibility />}
-                    </IconButton>
-                  </InputAdornment>
-                }
-                label="Password"
-              />
-              {/* forgot ,forget password link */}
-              {/* <Link style={{position:'absolute', right:0, top:74, textDecoration:'none'}} onClick={()=>{alert("this is password change root")}}>Forgot password?</Link> */}
-              <Link
-                style={{
-                  position: "absolute",
-                  right: 0,
-                  top: 74,
-                  textDecoration: "none",
-                }}
-                onClick={handleClickOpen}
-              >
-                Forgot password?
-              </Link>
-              {/* dialog open on click of forget password */}
-              <Dialog
-                open={open}
-                onClose={handleClose}
-                PaperProps={{
-                  component: "form",
-                  onSubmit: handleSubmit,
-                }}
-              >
-                {/* forget password dialog box dialog title      */}
-                <DialogTitle sx={{ color: "purple", textAlign: "center" }}>
-                  Did you forget your password?
-                </DialogTitle>
-                {/* forget password dialog box dialog content      */}
-                <DialogContent>
-                  {/* forget password dialog box dialog text      */}
-                  <DialogContentText sx={{ paddingBottom: 0 }}>
-                    Enter your email address and we'll send you a link to reset
-                    password
-                  </DialogContentText>
-                  {/* forget password dialog box email id      */}
-                  <TextField
-                    label="Email address"
-                    fullWidth
-                    id="email"
-                    name="email"
-                    type="email"
-                    required
-                  />
-                </DialogContent>
-                <Button
-                  type="submit"
-                  variant=""
-                  fullWidth
-                  sx={{
-                    height: 50,
-                    background: "#753081",
-                    color: "white",
-                    marginTop: 2,
-                  }}
-                >
-                  Request reset link
-                </Button>
-                <Button
-                  onClick={handleClose}
-                  sx={{ display: "flex", justifyContent: "center" }}
-                >
-                  Back to login
-                </Button>
-                <DialogActions></DialogActions>
-              </Dialog>
-            </FormControl>
-            {/* login button of Login Page and click handleLogin event on click*/}
-            <Button
-              style={{ marginTop: 60, background: "purple" }}
-              variant="contained"
-              onClick={handleLogin}              
+    <>
+      {/* all data of LoginPage will be return / available under this container */}
+      {show ? (
+        <Container id="myid" style={{ marginTop: 50 }}>
+          <Fragment>
+            {/* define paper size for show data */}
+            <Paper
+              style={{
+                height: 500,
+                width: 400,
+                border: "2px solid black",
+                display: "flex",
+                justifyContent: "center",
+              }}
             >
-              Log In
-            </Button>
-          </FormControl>
-        </Paper>
-      </Fragment>
-    </Container>
+              {/* inside FormControl having all controls of form like TextField label and all */}
+              <FormControl>
+                {/* <FormControl style={{border:'1px solid black', height:'250px'}}> */}
+                {/* the content above textfield is in top div */}
+                <TopDiv>
+                  <img src={digitalFlake} alt="company logoImage" />
+                  <Typography sx={{ textAlign: "center" }} variant="h3">
+                    <strong>Digital</strong>flake
+                  </Typography>
+                  <Typography sx={{ textAlign: "center" }} variant="h5">
+                    Welcome to Digitalflake Admin
+                  </Typography>
+                </TopDiv>
+                {/* ./ the content above textfield is in top div */}
+
+                {/* email id textfield LoginPage */}
+                <TextField
+                  id="emailIdLoginPage"
+                  required
+                  label="Email ID"
+                  name="email"
+                  type="email"
+                  autoComplete="current-password"
+                  style={{ marginTop: 20, marginBottom: 20 }}
+                />
+                {/* password textfield LoginPage         */}
+                <FormControl variant="outlined">
+                  <InputLabel htmlFor="outlined-adornment-password" required>
+                    Password
+                  </InputLabel>
+                  <OutlinedInput
+                    id="passwordLoginPage"
+                    required
+                    type={showPassword ? "text" : "password"}
+                    endAdornment={
+                      <InputAdornment position="end">
+                        <IconButton
+                          aria-label="toggle password visibility"
+                          onClick={handleClickShowPassword}
+                          onMouseDown={handleMouseDownPassword}
+                          edge="end"
+                        >
+                          {showPassword ? <VisibilityOff /> : <Visibility />}
+                        </IconButton>
+                      </InputAdornment>
+                    }
+                    label="Password"
+                  />
+                  {/* forgot ,forget password link */}
+                  {/* <Link style={{position:'absolute', right:0, top:74, textDecoration:'none'}} onClick={()=>{alert("this is password change root")}}>Forgot password?</Link> */}
+                  <Link
+                    style={{
+                      position: "absolute",
+                      right: 0,
+                      top: 74,
+                      textDecoration: "none",
+                    }}
+                    onClick={handleClickOpen}
+                  >
+                    Forgot password?
+                  </Link>
+                  {/* dialog open on click of forget password */}
+                  <Dialog
+                    open={open}
+                    onClose={handleClose}
+                    PaperProps={{
+                      component: "form",
+                      onSubmit: handleSubmit,
+                    }}
+                  >
+                    {/* forget password dialog box dialog title      */}
+                    <DialogTitle sx={{ color: "purple", textAlign: "center" }}>
+                      Did you forget your password?
+                    </DialogTitle>
+                    {/* forget password dialog box dialog content      */}
+                    <DialogContent>
+                      {/* forget password dialog box dialog text      */}
+                      <DialogContentText sx={{ paddingBottom: 0 }}>
+                        Enter your email address and we'll send you a link to
+                        reset password
+                      </DialogContentText>
+                      {/* forget password dialog box email id      */}
+                      <TextField
+                        label="Email address"
+                        fullWidth
+                        id="email"
+                        name="email"
+                        type="email"
+                        required
+                      />
+                    </DialogContent>
+                    <Button
+                      type="submit"
+                      variant=""
+                      fullWidth
+                      sx={{
+                        height: 50,
+                        background: "#753081",
+                        color: "white",
+                        marginTop: 2,
+                      }}
+                    >
+                      Request reset link
+                    </Button>
+                    <Button
+                      onClick={handleClose}
+                      sx={{ display: "flex", justifyContent: "center" }}
+                    >
+                      Back to login
+                    </Button>
+                    <DialogActions></DialogActions>
+                  </Dialog>
+                </FormControl>
+                {/* login button of Login Page and click handleLogin event on click*/}
+                <Button
+                  style={{ marginTop: 60, background: "purple" }}
+                  variant="contained"
+                  onClick={handleLogin}
+                >
+                  Log In
+                </Button>
+              </FormControl>
+            </Paper>
+          </Fragment>
+        </Container>
+      ) : (
+        <>
+          <Navbar />
+          <Grid container>
+            <Grid item xs={2} md={3}>
+              <Item
+                sx={{
+                  backgroundColor: "red",
+                  position: "fixed",
+                  width: { md: "25%", xs: "19%" },
+                }}
+              >
+                <Leftbar />
+              </Item>
+            </Grid>
+            <Grid item xs={10} md={9}>
+              <Item sx={{ backgroundColor: "yellow" }}>
+                <AdminPage />
+              </Item>
+              <Item sx={{ backgroundColor: "#95F9EA" }}>
+                <CategoryPage />
+              </Item>
+            </Grid>
+          </Grid>
+        </>
+      )}
+    </>
   );
 };
-
 export default LoginPage;

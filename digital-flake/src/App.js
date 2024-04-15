@@ -9,7 +9,7 @@ import styled from "styled-components";
 
 const Item = styled(Paper)(({ theme }) => ({}));
 
-function App() {
+function App(props) {
   return (
     <>    
       <LoginPage />

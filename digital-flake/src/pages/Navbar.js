@@ -15,6 +15,8 @@ import {
 import React, { useState } from "react";
 import digitalFlake from "../images/logo/digitalFlake.png";
 import { Menu as Menubar } from "@mui/icons-material";
+import LoginPage from "./LoginPage";
+import Leftbar from "./Leftbar";
 
 // for custom image
 const Image = styled("img")({
@@ -34,6 +36,16 @@ const Navbar = () => {
   // usestate for user profile
   const [anchorElUser, setAnchorElUser] = useState(null);
 
+  // for showing the AddNewCategory component
+  const [show, setShow] = useState(true);
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [showLeftbarAndAdminPage, setShowLeftbarAndAdminPage] = useState(false);
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    setShowLeftbarAndAdminPage(false); // Hide Leftbar and AdminPage on logout
+  };
   // for munu items
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -47,7 +59,30 @@ const Navbar = () => {
     setAnchorElUser(event.currentTarget);
   };
   // for user profile i.e. logout dashboard ...
-  const handleCloseUserMenu = () => {
+  const handleCloseUserMenu = (setting) => {
+    // You can perform actions based on the setting clicked
+    switch (setting) {
+      case "profile":
+        alert("profile clicked");
+        break;
+      case "account":
+        alert(" Account clicked");
+        break;
+      case "Dashboard":
+        alert(" Dashboard clicked");
+        break;
+      case "Logout":
+        alert(" Logout clicked");
+        if (show === true) {
+          setShow(false);
+        } else {
+          setShow(true);
+        }
+        
+        break;
+      default:
+        break;
+    }
     setAnchorElUser(null);
   };
 
@@ -55,6 +90,7 @@ const Navbar = () => {
   return (
     <>
       {/* main app bar for admin page */}
+    {show ? (
       <AppBar sx={{ position: "fixed" }}>
         <Container maxWidth={"xl"}>
           <Toolbar disableGutters>
@@ -172,10 +208,13 @@ const Navbar = () => {
                   horizontal: "right",
                 }}
                 open={Boolean(anchorElUser)}
-                onClose={handleCloseUserMenu}
+                onClose={() => handleCloseUserMenu(null)} // Pass null to indicate no setting clicked
               >
                 {settings.map((setting) => (
-                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                  <MenuItem
+                    key={setting}
+                    onClick={() => handleCloseUserMenu(setting)}
+                  >
                     <Typography textAlign="center">{setting}</Typography>
                   </MenuItem>
                 ))}
@@ -184,6 +223,11 @@ const Navbar = () => {
           </Toolbar>
         </Container>
       </AppBar>
+      ) : (
+        <>
+        <LoginPage />        
+        </>
+      )}
     </>
   );
 };
