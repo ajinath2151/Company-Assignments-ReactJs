@@ -6,6 +6,7 @@ import LoginPage from "./pages/LoginPage";
 import AdminPage from "./pages/AdminPage";
 import { Grid, Paper } from "@mui/material";
 import styled from "styled-components";
+import Test from "./pages/Test";
 
 const Item = styled(Paper)(({ theme }) => ({}));
 
@@ -13,6 +14,7 @@ function App(props) {
   return (
     <>    
       <LoginPage />
+      <Test />
       {/* <Navbar /> */}
       {/* for all pages of dashboard use grid system / container and maintain specs in window */}
       <Grid container>
