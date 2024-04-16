@@ -49,7 +49,7 @@ const LoginPage = () => {
   const [open, setOpen] = useState(false);
 
   // for showing the AddNewCategory component
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
 
   // for open dialog box onClick of forgot Password
   const handleClickOpen = (e) => {
@@ -107,7 +107,7 @@ const LoginPage = () => {
   return (
     <>
       {/* all data of LoginPage will be return / available under this container */}
-      {show ? (
+      {!show ? (
         <Container id="myid" style={{ marginTop: 50 }}>
           <Fragment>
             {/* define paper size for show data */}
@@ -247,7 +247,7 @@ const LoginPage = () => {
         </Container>
       ) : (
         <>
-          <Navbar />
+          <Navbar show={show} setShow={setShow} />
           <Grid container>
             <Grid item xs={2} md={3}>
               <Item

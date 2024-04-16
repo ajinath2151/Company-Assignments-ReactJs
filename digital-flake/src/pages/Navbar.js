@@ -30,14 +30,14 @@ const pages = ["Product", "pricing", "Block", "services"];
 const settings = ["profile", "account", "Dashboard", "Logout"];
 
 //main return function
-const Navbar = () => {
+const Navbar = (props) => {
   // usestate for menu items
   const [anchorElNav, setAnchorElNav] = useState(null);
   // usestate for user profile
   const [anchorElUser, setAnchorElUser] = useState(null);
 
   // for showing the AddNewCategory component
-  const [show, setShow] = useState(true);
+  // const [show, setShow] = useState(true);
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showLeftbarAndAdminPage, setShowLeftbarAndAdminPage] = useState(false);
@@ -73,10 +73,10 @@ const Navbar = () => {
         break;
       case "Logout":
         alert(" Logout clicked");
-        if (show === true) {
-          setShow(false);
+        if (props.show === true) {
+          props.setShow(false);
         } else {
-          setShow(true);
+          props.setShow(true);
         }
         
         break;
@@ -90,7 +90,7 @@ const Navbar = () => {
   return (
     <>
       {/* main app bar for admin page */}
-    {show ? (
+    {props.show ? (
       <AppBar sx={{ position: "fixed" }}>
         <Container maxWidth={"xl"}>
           <Toolbar disableGutters>
