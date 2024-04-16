@@ -1,0 +1,75 @@
+{
+    "products": [
+      {
+        "id": 1,
+        "name": "Cotton Designer Shirt With Light Blue",
+        "imageUrl": "https://imgmedia.lbb.in/media/2020/05/5eac0e7c833b2b7acdc583b2_1588334204878.jpg",
+        "price": 899,
+        "description": "They are typically made of cotton textile in a stockinette or jersey knit, which has a distinctively pliable texture compared to shirts made of woven cloth. Some modern versions have a body made from a continuously knitted tube, produced on a circular knitting machine, such that the torso has no side seams."
+      },
+      {
+        "id": 2,
+        "name": "Acer Laptop Silver Color",
+        "imageUrl": "https://cdn.thewirecutter.com/wp-content/media/2023/06/bestlaptops-2048px-9765.jpg?auto=webp&quality=75&width=1024",
+        "price": 39999,
+        "description": "Laptops are designed to be portable computers. They are smaller and lighter than desktops. The name connotes the user's ability to put the computer in their lap while they use it. Laptops have rechargeable batteries that can be used for a set period away from a power sourc"
+      },
+      {
+        "id": 3,
+        "name": "Multicolor t shirt for men",
+        "imageUrl": "https://rukminim1.flixcart.com/image/850/1000/xif0q/shopsy-t-shirt/m/4/n/xl-best-t-shirt-pradeep-collection-original-imagphgr2dgqcjpv.jpeg?q=90",
+        "price": 399,
+        "description": "Multicolor t shirt for men you can get pack of 4 for more discounts"
+      },
+      {
+        "id": 4,
+        "name": "HOKA Branded Shoes",
+        "imageUrl": "https://hips.hearstapps.com/hmg-prod/images/hoka-zinal-13085-1643565794.jpg",
+        "price": 4999,
+        "description": "A shoe is an item of footwear intended to protect and comfort the human foot. Though the human foot can adapt to varied terrains and climate conditions, it is vulnerable, and shoes provide protection. Form was originally tied to function, but over time, shoes also became fashion items."
+      },
+      {
+        "id": 5,
+        "name": "Black umbrella ",
+        "imageUrl": "https://www.oliverbrown.org.uk/cdn/shop/products/UmbrellaChestnut-Black_c867e0ef-6f06-4521-9846-9f183c74abba.jpg?v=1701641725",
+        "price": 59.99,
+        "description": "umbrella, a portable, hand-held device that is used for protection against rain and sunlight. The modern umbrella consists of a circular fabric or plastic screen stretched over hinged ribs that radiate from a central pole "
+      },
+      {
+        "id": 6,
+        "name": "Table for study",
+        "imageUrl": "https://www.godrejinterio.com/imagestore/B2C/56101543SD00192/56101543SD00192_01_500x500.jpg",
+        "price": 1999,
+        "description": "A table is an item of furniture with a raised flat top and is supported most commonly by 1 to 4 legs (although some can have more). It is used as a surface for working at, eating from or on which to place things."
+      },
+      {
+        "id": 7,
+        "name": "Mobile Samsung 7",
+        "imageUrl": "https://5.imimg.com/data5/PX/WQ/MN/SELLER-38271709/mobile.png",
+        "price": 7999,
+        "description": "mobile telephone, portable device for connecting to a telecommunications network in order to transmit and receive voice, video, or other data. Mobile phones typically connect to the public switched telephone network (PSTN) through one of two categories: cellular telephone systems or global satellite-based telephony"
+      },
+      {
+        "id": 8,
+        "name": "Branded Watch",
+        "imageUrl": "https://wwd.com/wp-content/uploads/2023/10/best-watches-for-men-orient.png?w=1000",
+        "price": 89.99,
+        "description": "A watch is a portable timepiece intended to be carried or worn by a person. It is designed to keep a consistent movement despite the motions caused by the person's activities."
+      },
+      {
+        "id": 9,
+        "name": "Boat earphone",
+        "imageUrl": "https://zebronics.com/cdn/shop/products/Zeb-star-pic1.jpg?v=1657887447&width=2048",
+        "price": 99.99,
+        "description": "Earphones are a small piece of equipment which you wear over or inside your ears so that you can listen to music, the radio, or your phone without anyone else hearing."
+      },
+      {
+        "id": 10,
+        "name": "Girls doll",
+        "imageUrl": "https://m.media-amazon.com/images/I/71sw0Y1D43L.jpg",
+        "price": 109.99,
+        "description": "a child's toy that looks like a small person or a baby."
+      }
+    ]
+  }
+  

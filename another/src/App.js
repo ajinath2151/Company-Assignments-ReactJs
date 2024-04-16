@@ -1,3 +1,4 @@
+import Product from './Test/Product';
 import BootstrapUse from './credentek/BootstrapUse';
 import FromChatgpt from './credentek/FromChatgpt';
 import Index from './credentek/Index';
@@ -9,7 +10,9 @@ function App() {
       {/* <Index /> */}
       {/* <FromChatgpt /> */}
       {/* <BootstrapUse /> */}
-      <EmployeeManagement />
+      {/* <EmployeeManagement /> */}
+      <Product />
+      
     </>
   );
 }
