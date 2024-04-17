@@ -14,7 +14,7 @@ function App(props) {
   return (
     <>    
       <LoginPage />
-      {/* <Test /> */}
+      <Test />
       {/* <Navbar /> */}
       {/* for all pages of dashboard use grid system / container and maintain specs in window */}
       <Grid container>
