@@ -30,7 +30,6 @@ import { Grid } from "@mui/material";
 
 import { useFormInputValidation } from "react-form-input-validation";
 
-
 const Item = styled(Paper)(({ theme }) => ({}));
 
 // Styled Container for div style
@@ -45,6 +44,41 @@ const TopDiv = styled.div({
 
 //component name LoginPage
 const LoginPage = () => {
+  //for validation
+  const [fields, errors, form] = useFormInputValidation(
+    {
+      email: "",
+      password: "",
+    },
+    {
+      email: "required|email",
+      password: "required",
+    }
+  );
+
+  const onSubmit = async (event) => {
+    const isValid = await form.validate(event);
+    if (isValid) {
+      event.preventDefault();
+      const emailValue = document.getElementById("emailIdLoginPage").value;
+      const passwordValue = document.getElementById("passwordLoginPage").value;
+
+      if (!emailValue || !passwordValue) {
+        // alert("Please fill in both email and password fields.");
+      } else {
+        // Proceed with login logic
+        // alert("Login");
+
+        if (show === true) {
+          setShow(false);
+        } else {
+          setShow(true);
+        }
+      }
+      // console.log(fields, errors);
+      // Perform api call here
+    }
+  };
   // show/hide password on click of eya icon
   const [showPassword, setShowPassword] = React.useState(false);
   // for email inside forget Password combo box
@@ -90,7 +124,6 @@ const LoginPage = () => {
 
   const handleLogin = (event) => {
     event.preventDefault();
-
     const emailValue = document.getElementById("emailIdLoginPage").value;
     const passwordValue = document.getElementById("passwordLoginPage").value;
 
@@ -137,24 +170,115 @@ const LoginPage = () => {
                     Welcome to Digitalflake Admin
                   </Typography>
                 </TopDiv>
-                {/* ./ the content above textfield is in top div */}
+                  <FormControl variant="outlined">
+                <div>
+                  <form
+                    className="myForm"
+                    noValidate
+                    autoComplete="off"
+                    onSubmit={onSubmit}
+                  >
+                    <TextField
+                      id="emailIdLoginPage"
+                      required
+                      label="Email ID"
+                      name="email"
+                      type="text"
+                      onBlur={form.handleBlurEvent}
+                      onChange={form.handleChangeEvent}
+                      value={fields.email}
+                      data-attribute-name="email"
+                      autoComplete="current-password"
+                      style={{
+                        marginTop: 20,
+                        marginBottom: 0,
+                        width: "95%",
+                      }}
+                    />
+                    <p></p>
+                    <label className="error">
+                      {errors.email ? errors.email : ""}
+                    </label>
+                    <p>
+                      <TextField
+                        id="passwordLoginPage"
+                        required
+                        label="Password"
+                        name="password"
+                        type="password"
+                        onBlur={form.handleBlurEvent}
+                        onChange={form.handleChangeEvent}
+                        value={fields.password}
+                        data-attribute-name="password..."
+                        autoComplete="current-password"
+                        style={{
+                          marginTop: 10,
+                          marginBottom: 10,
+                          width: "95%",
+                        }}
+                      />
 
-                {/* email id textfield LoginPage */}
-                <TextField
+                      <label className="error">
+                        {errors.password ? errors.password : ""}
+                      </label>
+                    </p>
+                    <p>
+                      {/* <button type="submit">Submit...</button> */}
+                      <Button
+                style={{
+                  background: "purple",
+                  position: "absolute",
+                  top:"110%",                  
+                  width: "100%",
+                  
+                }}
+                variant="contained"
+                
+                type="submit"
+              >
+                Log In
+              </Button> 
+                    </p>
+                  </form>
+                </div>
+                {/* <TextField
                   id="emailIdLoginPage"
                   required
                   label="Email ID"
                   name="email"
-                  type="email"
+                  type="text"
+                  onBlur={form.handleBlurEvent}
+                  onChange={form.handleChangeEvent}
+                  value={fields.email}
+                  data-attribute-name="email..."
                   autoComplete="current-password"
                   style={{ marginTop: 20, marginBottom: 20 }}
                 />
+                <label className="error">
+                  {errors.email ? errors.email : ""}
+                </label> */}
+                {/* <p>
+            <label>
+              ajinath
+              <input
+                type="text"
+                name="email"
+                onBlur={form.handleBlurEvent}
+                onChange={form.handleChangeEvent}
+                value={fields.email}
+                data-attribute-name="email..."
+              />
+            </label>
+            <label className="error">
+              {errors.email ? errors.email : ""}
+            </label>
+          </p>   */}
+
                 {/* password textfield LoginPage         */}
-                <FormControl variant="outlined">
-                  <InputLabel htmlFor="outlined-adornment-password" required>
+                  {/* <InputLabel htmlFor="outlined-adornment-password" required>
                     Password
-                  </InputLabel>
-                  <OutlinedInput
+                  </InputLabel> */}
+                  {/* <OutlinedInput
                     id="passwordLoginPage"
                     required
                     type={showPassword ? "text" : "password"}
@@ -171,20 +295,18 @@ const LoginPage = () => {
                       </InputAdornment>
                     }
                     label="Password"
-                  />
-                  {/* forgot ,forget password link */}
-                  {/* <Link style={{position:'absolute', right:0, top:74, textDecoration:'none'}} onClick={()=>{alert("this is password change root")}}>Forgot password?</Link> */}
-                  <Link
-                    style={{
-                      position: "absolute",
-                      right: 0,
-                      top: 74,
-                      textDecoration: "none",
-                    }}
-                    onClick={handleClickOpen}
-                  >
-                    Forgot password?
-                  </Link>
+                  /> */}
+                    <Link
+                      style={{
+                        position: "absolute",
+                        right: 0,
+                        top: "90%",                        
+                        textDecoration: "none",
+                      }}
+                      onClick={handleClickOpen}
+                    >
+                      Forgot password?
+                    </Link>
                   {/* dialog open on click of forget password */}
                   <Dialog
                     open={open}
@@ -194,6 +316,8 @@ const LoginPage = () => {
                       onSubmit: handleSubmit,
                     }}
                   >
+                    {/* forgot ,forget password link */}
+                    {/* <Link style={{position:'absolute', right:0, top:74, textDecoration:'none'}} onClick={()=>{alert("this is password change root")}}>Forgot password?</Link> */}
                     {/* forget password dialog box dialog title      */}
                     <DialogTitle sx={{ color: "purple", textAlign: "center" }}>
                       Did you forget your password?
@@ -238,16 +362,34 @@ const LoginPage = () => {
                   </Dialog>
                 </FormControl>
                 {/* login button of Login Page and click handleLogin event on click*/}
-                <Button
-                  style={{ marginTop: 60, background: "purple" }}
-                  variant="contained"
-                  onClick={handleLogin}
-                >
-                  Log In
-                </Button>
               </FormControl>
             </Paper>
           </Fragment>
+
+          <div>
+            {/* <h3>React Form Input Validation - validate</h3> */}
+            {/* <form
+              className="myForm"
+              noValidate
+              autoComplete="off"
+              onSubmit={onSubmit}
+            > */}
+            {/* <Button
+                style={{
+                  background: "purple",
+                  position: "absolute",
+                  bottom: 100,
+                  width: "24%",
+                  margin: "0px 20px",
+                }}
+                variant="contained"
+                // onClick={handleLogin}
+                type="submit"
+              >
+                Log In
+              </Button> */}
+            {/* </form> */}
+          </div>
         </Container>
       ) : (
         <>
