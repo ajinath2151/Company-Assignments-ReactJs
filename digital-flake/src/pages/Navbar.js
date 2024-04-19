@@ -72,7 +72,7 @@ const Navbar = (props) => {
         alert(" Dashboard clicked");
         break;
       case "Logout":
-        alert(" Logout clicked");
+        // alert(" Logout clicked");
         if (props.show === true) {
           props.setShow(false);
         } else {

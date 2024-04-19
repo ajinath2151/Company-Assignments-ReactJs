@@ -52,7 +52,7 @@ const LoginPage = () => {
     },
     {
       email: "required|email",
-      password: "required",
+      password: "required|between:8,12",
     }
   );
 
@@ -63,16 +63,16 @@ const LoginPage = () => {
       const emailValue = document.getElementById("emailIdLoginPage").value;
       const passwordValue = document.getElementById("passwordLoginPage").value;
 
+       
       if (!emailValue || !passwordValue) {
         // alert("Please fill in both email and password fields.");
       } else {
         // Proceed with login logic
         // alert("Login");
-
         if (show === true) {
-          setShow(false);
+          setShow(false);          
         } else {
-          setShow(true);
+          setShow(true);          
         }
       }
       // console.log(fields, errors);
@@ -122,24 +122,25 @@ const LoginPage = () => {
     event.preventDefault();
   };
 
-  const handleLogin = (event) => {
-    event.preventDefault();
-    const emailValue = document.getElementById("emailIdLoginPage").value;
-    const passwordValue = document.getElementById("passwordLoginPage").value;
+  // const handleLogin = (event) => {
+  //   event.preventDefault();
+  //   const emailValue = document.getElementById("emailIdLoginPage").value;
+  //   const passwordValue = document.getElementById("passwordLoginPage").value;
 
-    if (!emailValue || !passwordValue) {
-      alert("Please fill in both email and password fields.");
-    } else {
-      // Proceed with login logic
-      alert("Login");
+  //   if (!emailValue || !passwordValue) {
+  //     alert("Please fill in both email and password fields.");
+  //   } else {
+      
+  //     alert("Login");
+      
 
-      if (show === true) {
-        setShow(false);
-      } else {
-        setShow(true);
-      }
-    }
-  };
+  //     if (show === true) {
+  //       setShow(false);
+  //     } else {
+  //       setShow(true);      
+  //     }
+  //   }    
+  // };
 
   return (
     <>
@@ -209,7 +210,7 @@ const LoginPage = () => {
                         onBlur={form.handleBlurEvent}
                         onChange={form.handleChangeEvent}
                         value={fields.password}
-                        data-attribute-name="password..."
+                        data-attribute-name="password"
                         autoComplete="current-password"
                         style={{
                           marginTop: 10,
