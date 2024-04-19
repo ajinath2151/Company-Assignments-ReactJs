@@ -171,7 +171,7 @@ const LoginPage = () => {
                     Welcome to Digitalflake Admin
                   </Typography>
                 </TopDiv>
-                  <FormControl variant="outlined">
+                  <FormControl style={{ width: 300 }}>
                 <div>
                   <form
                     className="myForm"
@@ -191,8 +191,7 @@ const LoginPage = () => {
                       data-attribute-name="email"
                       autoComplete="current-password"
                       style={{
-                        marginTop: 20,
-                        marginBottom: 0,
+                        marginTop: 20,                        
                         width: "95%",
                       }}
                     />
@@ -213,7 +212,7 @@ const LoginPage = () => {
                         data-attribute-name="password"
                         autoComplete="current-password"
                         style={{
-                          marginTop: 10,
+                          marginTop: 5,
                           marginBottom: 10,
                           width: "95%",
                         }}
@@ -301,7 +300,7 @@ const LoginPage = () => {
                       style={{
                         position: "absolute",
                         right: 0,
-                        top: "90%",                        
+                        top: "92%",                        
                         textDecoration: "none",
                       }}
                       onClick={handleClickOpen}
