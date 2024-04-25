@@ -36,6 +36,7 @@ const Leftbar = () => {
   //for toggle category list item value
   const handleCategoryClick = () => {
     setCategoryOpen(!categoryOpen);
+    
   };
   //for toggle product list item value
   const handleProductClick = () => {
@@ -49,7 +50,7 @@ const Leftbar = () => {
       <Container
         sx={{
           height: "100vh",
-          backgroundColor: "red",
+          backgroundColor: "#F4F4F4",
           display: "flex",
           position: "relative",
           top: { xs: "69px", md: "69px" },

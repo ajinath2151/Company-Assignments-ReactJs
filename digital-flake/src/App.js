@@ -30,10 +30,10 @@ function App(props) {
           </Item>
         </Grid>
         <Grid item xs={10} md={9}>
-          <Item sx={{ backgroundColor: "yellow" }}>
+          <Item>
             {/* <AdminPage /> */}
           </Item>
-          <Item sx={{ backgroundColor: "#95F9EA" }}>
+          <Item>
             {/* <CategoryPage /> */}
           </Item>
         </Grid>

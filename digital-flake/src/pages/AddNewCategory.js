@@ -36,8 +36,8 @@ const AddNewCategory = () => {
         <Container
           sx={{
             marginTop: { md: "69px", xs: "64px" },
-            backgroundColor: "lightcoral",
             height: "100vh",
+            position:'relative'
           }}
         >
           {/* for top / back logo and add Category */}
@@ -46,7 +46,7 @@ const AddNewCategory = () => {
             <Typography sx={{ marginLeft: 2 }}>Add Category</Typography>
           </Box>
           {/* for other 4 fields of textfield and select */}
-          <FormControl sx={{ display: "flex" }}>
+          <FormControl sx={{ display: "flex"}}>
             <Box sx={{ flexDirection: "row", flexGrow: 1 }}>
               <TextField
                 required

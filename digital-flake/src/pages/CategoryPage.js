@@ -19,6 +19,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import InputBase from "@mui/material/InputBase";
 import axios from "axios";
 import AddNewCategory from "./AddNewCategory";
+import './CategoryPageStyle.css';
 // for shortcut keys
 // import { useHotkeys, HotkeysProvider } from "react-hotkeys-hook";
 
@@ -78,9 +79,10 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 //this one used for change table columns background and font size of table data
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
-  [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.common.black,
-    color: theme.palette.common.white,
+  [`&.${tableCellClasses.head}`]: {    
+    backgroundColor: theme.palette.common.white,
+    // color: theme.palette.common.white,    
+    fontSize:20,    
   },
   [`&.${tableCellClasses.body}`]: {
     fontSize: 14,
@@ -131,9 +133,9 @@ const CategoryPage = () => {
   useEffect(() => {
     axios.get("https://jsonplaceholder.typicode.com/posts").then((response) => {
       setRows(response.data);
-      console.log([response.data]);
       //all data set to setFilterData function
       setFilterData(response.data);
+      console.log(response.data);
     });
   }, []);
 
@@ -220,38 +222,42 @@ const CategoryPage = () => {
                       {column.name}
                     </StyledTableCell>
                   ))}
+                  {/* <Edit sx={{ marginRight: 2 }} />*/}  {" "} 
+                  {/* <Delete sx={{ marginRight: 2 }} /> */}
+                  {/* <Typography visibility="hidden">.</Typography> */}
                 </StyledTableRow>
               </TableHead>
               <TableBody>
                 {/* {rows?.map((row)=>(
                   <TableCell>{row.id}</TableCell>
                 ))} */}
-                {rows?.map((row, index) => {
-                  return (
-                    <>
-                      <StyledTableRow key={index}>
-                        {columns?.map((column, index) => {
-                          let value = row[column.id];
-                          return (
-                            <StyledTableCell key={value}>
-                              {value}
-                            </StyledTableCell>
-                          );
-                        })}
-                        <div
-                          style={{
-                            display: "flex",
-                            padding: "5px 0px",
-                            margin: "5px 0px",
-                          }}
-                        >
-                          <Edit sx={{ marginRight: 2 }} />{" "}
-                          <Delete sx={{ marginRight: 2 }} />
-                        </div>
-                      </StyledTableRow>
-                    </>
-                  );
-                })}
+                {rows?.map((row, i) => {
+  return (
+    <React.Fragment key={i}>
+      <StyledTableRow>
+        {columns?.map((column, index) => {
+          let value = row[column.id];
+          return (
+            <StyledTableCell key={`${i}-${index}`}>
+              {value}
+            </StyledTableCell>
+          );
+        })}
+        <div
+          style={{
+            display: "flex",
+            padding: "5px 0px",
+            margin: "5px 0px",
+          }}
+        >
+          <Edit sx={{ marginRight: 2 }} />{" "}
+          <Delete sx={{ marginRight: 2 }} />
+        </div>
+      </StyledTableRow>
+    </React.Fragment>
+  );
+})}
+
                 {/* {rows.map((d, i) => (
                 <div kay={i}>{d.title}</div>
               ))} */}

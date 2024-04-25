@@ -18,8 +18,7 @@ const AdminPage = () => {
       {/* main container */}
       <Container
         sx={{
-          height: "100vh",
-          backgroundColor: "yellow",
+          height: "100vh",          
           display: "flex",
           justifyContent: "center",
           alignItems: "center",

@@ -8,17 +8,13 @@ import {
   DialogContentText,
   DialogTitle,
   FormControl,
-  IconButton,
-  InputAdornment,
-  InputLabel,
   Link,
-  OutlinedInput,
   Paper,
   Typography,
 } from "@mui/material";
 import digitalFlake from "../images/logo/digitalFlake.png";
 import TextField from "@mui/material/TextField";
-import { Visibility, VisibilityOff } from "@mui/icons-material";
+// import { Visibility, VisibilityOff } from "@mui/icons-material";
 import styled from "styled-components";
 import "./LoginPage.css";
 
@@ -63,16 +59,15 @@ const LoginPage = () => {
       const emailValue = document.getElementById("emailIdLoginPage").value;
       const passwordValue = document.getElementById("passwordLoginPage").value;
 
-       
       if (!emailValue || !passwordValue) {
         // alert("Please fill in both email and password fields.");
       } else {
         // Proceed with login logic
         // alert("Login");
         if (show === true) {
-          setShow(false);          
+          setShow(false);
         } else {
-          setShow(true);          
+          setShow(true);
         }
       }
       // console.log(fields, errors);
@@ -80,9 +75,9 @@ const LoginPage = () => {
     }
   };
   // show/hide password on click of eya icon
-  const [showPassword, setShowPassword] = React.useState(false);
+  // const [showPassword, setShowPassword] = React.useState(false);
   // for email inside forget Password combo box
-  const [email, setEmail] = useState(""); // State variable to hold email address
+  // const [email, setEmail] = useState(""); // State variable to hold email address
   // useState for open dialog box on click of forget / forgot password
   const [open, setOpen] = useState(false);
 
@@ -105,7 +100,7 @@ const LoginPage = () => {
     const formData = new FormData(event.currentTarget);
     const formJson = Object.fromEntries(formData.entries());
     const emailValue = formJson.email;
-    setEmail(emailValue); // Store the email address in state
+    // setEmail(emailValue); // Store the email address in state
     console.log(emailValue);
     handleClose();
     alert("password link sent to your email");
@@ -115,12 +110,12 @@ const LoginPage = () => {
   };
 
   // for show / hide password on click of eye icon of password
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
+  // const handleClickShowPassword = () => setShowPassword((show) => !show);
 
   // for prevent default password on click of eye icon of password
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
+  // const handleMouseDownPassword = (event) => {
+  //   event.preventDefault();
+  // };
 
   // const handleLogin = (event) => {
   //   event.preventDefault();
@@ -130,16 +125,15 @@ const LoginPage = () => {
   //   if (!emailValue || !passwordValue) {
   //     alert("Please fill in both email and password fields.");
   //   } else {
-      
+
   //     alert("Login");
-      
 
   //     if (show === true) {
   //       setShow(false);
   //     } else {
-  //       setShow(true);      
+  //       setShow(true);
   //     }
-  //   }    
+  //   }
   // };
 
   return (
@@ -171,77 +165,74 @@ const LoginPage = () => {
                     Welcome to Digitalflake Admin
                   </Typography>
                 </TopDiv>
-                  <FormControl style={{ width: 300 }}>
-                <div>
-                  <form
-                    className="myForm"
-                    noValidate
-                    autoComplete="off"
-                    onSubmit={onSubmit}
-                  >
-                    <TextField
-                      id="emailIdLoginPage"
-                      required
-                      label="Email ID"
-                      name="email"
-                      type="text"
-                      onBlur={form.handleBlurEvent}
-                      onChange={form.handleChangeEvent}
-                      value={fields.email}
-                      data-attribute-name="email"
-                      autoComplete="current-password"
-                      style={{
-                        marginTop: 20,                        
-                        width: "95%",
-                      }}
-                    />
-                    <p></p>
-                    <label className="error">
-                      {errors.email ? errors.email : ""}
-                    </label>
-                    <p>
+                <FormControl style={{ width: 300 }}>
+                  <div>
+                    <form
+                      className="myForm"
+                      noValidate
+                      autoComplete="off"
+                      onSubmit={onSubmit}
+                    >
                       <TextField
-                        id="passwordLoginPage"
+                        id="emailIdLoginPage"
                         required
-                        label="Password"
-                        name="password"
-                        type="password"
+                        label="Email ID"
+                        name="email"
+                        type="text"
                         onBlur={form.handleBlurEvent}
                         onChange={form.handleChangeEvent}
-                        value={fields.password}
-                        data-attribute-name="password"
+                        value={fields.email}
+                        data-attribute-name="email"
                         autoComplete="current-password"
                         style={{
-                          marginTop: 5,
-                          marginBottom: 10,
+                          marginTop: 20,
                           width: "95%",
                         }}
                       />
-
                       <label className="error">
-                        {errors.password ? errors.password : ""}
+                        {errors.email ? errors.email : ""}
                       </label>
-                    </p>
-                    <p>
-                      {/* <button type="submit">Submit...</button> */}
-                      <Button
-                style={{
-                  background: "purple",
-                  position: "absolute",
-                  top:"110%",                  
-                  width: "100%",
-                  
-                }}
-                variant="contained"
-                
-                type="submit"
-              >
-                Log In
-              </Button> 
-                    </p>
-                  </form>
-                </div>
-                {/* <TextField
+                      <p>
+                        <TextField
+                          id="passwordLoginPage"
+                          required
+                          label="Password"
+                          name="password"
+                          type="password"
+                          onBlur={form.handleBlurEvent}
+                          onChange={form.handleChangeEvent}
+                          value={fields.password}
+                          data-attribute-name="password"
+                          autoComplete="current-password"
+                          style={{
+                            marginTop: 5,
+                            marginBottom: 10,
+                            width: "95%",
+                          }}
+                        />
+
+                        <label className="error">
+                          {errors.password ? errors.password : ""}
+                        </label>
+                      </p>
+                      <p>
+                        {/* <button type="submit">Submit...</button> */}
+                        <Button
+                          style={{
+                            background: "purple",
+                            position: "absolute",
+                            top: "110%",
+                            width: "100%",
+                          }}
+                          variant="contained"
+                          type="submit"
+                        >
+                          Log In
+                        </Button>
+                      </p>
+                    </form>
+                  </div>
+                  {/* <TextField
                   id="emailIdLoginPage"
                   required
                   label="Email ID"
@@ -257,7 +248,7 @@ const LoginPage = () => {
                 <label className="error">
                   {errors.email ? errors.email : ""}
                 </label> */}
-                {/* <p>
+                  {/* <p>
             <label>
               ajinath
               <input
@@ -274,7 +265,7 @@ const LoginPage = () => {
             </label>
           </p>   */}
 
-                {/* password textfield LoginPage         */}
+                  {/* password textfield LoginPage         */}
                   {/* <InputLabel htmlFor="outlined-adornment-password" required>
                     Password
                   </InputLabel> */}
@@ -296,17 +287,17 @@ const LoginPage = () => {
                     }
                     label="Password"
                   /> */}
-                    <Link
-                      style={{
-                        position: "absolute",
-                        right: 0,
-                        top: "92%",                        
-                        textDecoration: "none",
-                      }}
-                      onClick={handleClickOpen}
-                    >
-                      Forgot password?
-                    </Link>
+                  <Link
+                    style={{
+                      position: "absolute",
+                      right: 0,
+                      top: "92%",
+                      textDecoration: "none",
+                    }}
+                    onClick={handleClickOpen}
+                  >
+                    Forgot password?
+                  </Link>
                   {/* dialog open on click of forget password */}
                   <Dialog
                     open={open}
@@ -407,10 +398,10 @@ const LoginPage = () => {
               </Item>
             </Grid>
             <Grid item xs={10} md={9}>
-              <Item sx={{ backgroundColor: "yellow" }}>
+              <Item>
                 <AdminPage />
               </Item>
-              <Item sx={{ backgroundColor: "#95F9EA" }}>
+              <Item>
                 <CategoryPage />
               </Item>
             </Grid>
