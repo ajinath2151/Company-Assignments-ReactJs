@@ -47,7 +47,7 @@ const LoginPage = ({ onLogin }) => {
     if (isValid) {
       event.preventDefault();
       onLogin(); // Call the onLogin function passed from parent
-      navigate("/product"); // Navigate to Product page      
+      navigate("/adminPage"); // Navigate to Product page      
     }
   };
 

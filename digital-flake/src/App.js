@@ -12,6 +12,7 @@ import Contact from "./pages/Contact";
 import Leftbar from "./pages/Leftbar";
 import AdminPage from "./pages/AdminPage";
 import Block from "./pages/Block";
+import CategoryPage from "./pages/CategoryPage";
 import Services from "./pages/Services";
 import Profile from "./pages/Profile";
 import Account from "./pages/Account";
@@ -66,10 +67,10 @@ const App = () => {
               />
               {
                 
-                isLoggedIn && <> <Route path="/product" element={<Product />} />
+                isLoggedIn && <> <Route path="/adminPage" element={<AdminPage />} />
               <Route path="/contact" element={<Contact />} />
-              <Route path="/block" element={<Block />} />
-              <Route path="/services" element={<Services />} />
+              <Route path="/category" element={<CategoryPage />} />
+              <Route path="/product" element={<Product />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/account" element={<Account />} />
               <Route path="/dashboard" element={<Dashboard />} />
@@ -96,7 +97,7 @@ function AdminComponents() {
     <>
       <Routes>
         <Route path="/" element={<AdminPage />} />
-        <Route path="/product" element={<Product />} />
+        <Route path="/adminPage" element={<AdminPage />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/block" element={<Block />} />
         <Route path="/services" element={<Services />} />

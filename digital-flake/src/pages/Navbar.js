@@ -18,7 +18,7 @@ const Navbar = (props) => {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
 
-  const pages = ["Product", "Contact", "Block", "Services"];
+  const pages = ["Admin", "Category", "Product" ,"Contact"];
   const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
   const handleLogout = () => {
