@@ -77,7 +77,7 @@ const App = () => {
               </>
             }
               <Route
-                path="/logout"
+                path="/loginPage"
                 element={<LoginPage onLogin={handleLogin} />}
               />
               <Route

@@ -37,12 +37,21 @@ const Navbar = (props) => {
     setAnchorElUser(event.currentTarget);
   };
 
+  
+
   const handleCloseUserMenu = (setting) => {
-    if(setting==='Logout') {
-      props.onLogin();
-      navigate("/logout");
+    setAnchorElUser(setting.currentTarget);
+    if (setting === 'Logout') {
+      const confirmed = window.confirm('Are you sure you want to logout?');
+      if (confirmed) {
+        props.onLogin();
+        navigate("/loginPage");
+      }
     }
   };
+  
+  
+  
 
   return (
     <>
