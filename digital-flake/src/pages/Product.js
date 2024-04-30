@@ -28,7 +28,7 @@ const Product = () => {
           <Image
             src={digitalFlake}
             alt="digital flake logo"
-            sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
+            
           />
 
           <Typography

@@ -70,8 +70,7 @@ const AddNewCategory = () => {
             <div style={{ display: "flex", alignItems: "center" }}>
               <Image
                 src={digitalFlake}
-                alt="digital flake logo"
-                sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
+                alt="digital flake logo"                
               />
 
               <Typography

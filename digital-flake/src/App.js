@@ -43,7 +43,7 @@ const App = () => {
 
   return (
     <Router>
-      <Grid container spacing={2}>
+      <Grid container>
         {isLoggedIn && (
           <Grid item xs={12}>
             <Item>
@@ -51,14 +51,14 @@ const App = () => {
             </Item>
           </Grid>
         )}
-        <Grid item xs={2}>
+        <Grid item xs={3} md={3}>
           {isLoggedIn && (
             <Item>
               <Leftbar />
             </Item>
           )}
         </Grid>
-        <Grid item xs={10}>
+        <Grid item xs={9} md={9}>
           <Item>
             <Routes>
               <Route

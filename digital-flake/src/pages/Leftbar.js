@@ -53,7 +53,7 @@ const Leftbar = () => {
           backgroundColor: "#F4F4F4",
           display: "flex",
           position: "relative",
-          top: { xs: "69px", md: "69px" },
+          top: { xs: "29px", md: "33px" },
         }}
       >
         {/* all i.e. home category and product list items with their logo and inner content */}
