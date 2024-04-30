@@ -1,11 +1,25 @@
 import React, { useState } from "react";
 import CategoryPage from "./CategoryPage";
-import { Box, Button, Container, TextField, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Container,
+  TextField,
+  Typography,
+  styled,
+  Avatar,
+} from "@mui/material";
 import { KeyboardBackspace } from "@mui/icons-material";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import digitalFlake from "../images/logo/digitalFlake.png";
+
+const Image = styled("img")({
+  width: "30px",
+  height: "30px",
+});
 
 //main function / component
 const AddNewCategory = () => {
@@ -37,16 +51,54 @@ const AddNewCategory = () => {
           sx={{
             marginTop: { md: "69px", xs: "64px" },
             height: "100vh",
-            position:'relative'
+            position: "relative",
           }}
         >
+          <Box
+            component="section"
+            sx={{
+              p: 2,
+              border: "1px dashed grey",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              flexWrap: "nowrap", 
+              backgroundColor:'purple',
+              color: '#FFFFFF',
+            }}
+          >
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <Image
+                src={digitalFlake}
+                alt="digital flake logo"
+                sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
+              />
+
+              <Typography
+                variant="h6"
+                noWrap
+                component="a"
+                href="#app-bar-with-responsive-menu"
+                sx={{
+                  display: { xs: "none", md: "flex" },
+                  fontFamily: "monospace",
+                  color: "inherit",
+                  textDecoration: "none",
+                }}
+              >
+                <strong>Digital</strong>flake
+              </Typography>
+            </div>
+            <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+          </Box>
+
           {/* for top / back logo and add Category */}
           <Box sx={{ display: "flex", padding: "20px 0px" }}>
             <KeyboardBackspace onClick={handleCategory} />
             <Typography sx={{ marginLeft: 2 }}>Add Category</Typography>
           </Box>
           {/* for other 4 fields of textfield and select */}
-          <FormControl sx={{ display: "flex"}}>
+          <FormControl sx={{ display: "flex" }}>
             <Box sx={{ flexDirection: "row", flexGrow: 1 }}>
               <TextField
                 required
