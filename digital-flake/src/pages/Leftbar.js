@@ -48,11 +48,12 @@ const Leftbar = () => {
     <div>
       {/* main container */}
       <Container
-        sx={{
+         sx={{
           height: "100vh",
           backgroundColor: "#F4F4F4",
           display: "flex",
           position: "relative",
+          top: { xs: "69px", md: "69px" },
           top: { xs: "29px", md: "33px" },
         }}
       >
