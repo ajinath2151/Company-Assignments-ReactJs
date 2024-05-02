@@ -49,12 +49,10 @@ const Leftbar = () => {
       {/* main container */}
       <Container
          sx={{
-          height: "100vh",
-          backgroundColor: "#F4F4F4",
+          height: "100vh",          
           display: "flex",
-          position: "relative",
-          top: { xs: "69px", md: "69px" },
-          top: { xs: "29px", md: "33px" },
+          position: "fixed",
+          top: { xs: "69px", md: "69px" },          
         }}
       >
         {/* all i.e. home category and product list items with their logo and inner content */}

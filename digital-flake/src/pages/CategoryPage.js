@@ -117,7 +117,7 @@ const CategoryPage = () => {
   };
 
   // Debounced version of fetchData
-  const debouncedFetchData = debounce(fetchData, 1000); // 3000ms debounce time
+  const debouncedFetchData = debounce(fetchData, 2000);
 
   const handleFilter = (value) => {
     debouncedFetchData(value.toLowerCase());
