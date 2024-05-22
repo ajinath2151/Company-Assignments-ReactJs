@@ -107,7 +107,7 @@ const LoginPage = ({ onLogin }) => {
                 autoComplete="current-password"
                 style={{ marginTop: 20, width: "95%" }}
               />
-              <label className="error">{errors.email ? errors.email : ""}</label>
+              <label style={{color:"red"}} className="error">{errors.email ? errors.email : "" }</label>
               <p>
                 <TextField
                   id="passwordLoginPage"
@@ -122,7 +122,7 @@ const LoginPage = ({ onLogin }) => {
                   autoComplete="current-password"
                   style={{ marginTop: 5, marginBottom: 10, width: "95%" }}
                 />
-                <label className="error">{errors.password ? errors.password : ""}</label>
+                <label style={{color:"red"}} className="error">{errors.password ? errors.password : ""}</label>
               </p>
               <p>
                 <Button
