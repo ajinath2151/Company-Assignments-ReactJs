@@ -123,7 +123,7 @@ const LoginPage = ({ onLogin }) => {
                   style={{ marginTop: 5, marginBottom: 10, width: "95%" }}
                 />
                 <label style={{color:"red"}} className="error">{errors.password ? errors.password : ""}</label>
-              </p>
+v              </p>
               <p>
                 <Button
                   style={{ background: "purple", position: "absolute", top: "110%", width: "100%", right:'0%' }}
