@@ -5,8 +5,8 @@ import EmployeeDataTable from './components/EmployeeDataTable';
 function App() {
   return (
     <div>
-      {/* <DataTable /> */}
-      {/* <EmployeeDataTable /> */}
+      <DataTable />
+      <EmployeeDataTable />
     </div>
   );
 }
