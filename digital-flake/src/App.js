@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import {
   BrowserRouter as Router,
   Routes,
-  Route,
-  
-} from "react-router-dom";
+  Route} from "react-router-dom";
 import Navbar from "./pages/Navbar";
 import LoginPage from "./pages/LoginPage";
 import Product from "./pages/Product";
@@ -22,6 +20,9 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import { styled } from '@mui/material/styles';
 
+
+
+
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
   ...theme.typography.body2,
@@ -31,13 +32,22 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  let token=false;
 
+  const [isLoggedIn, setIsLoggedIn] = useState(token);
+  useEffect(()=> {
+    const token = sessionStorage.getItem('lagin_aahe_ka')?true:false;
+    setIsLoggedIn(token);
+
+    });
   const handleLogin = () => {
-    setIsLoggedIn(!isLoggedIn);
+    // setIsLoggedIn(!isLoggedIn);
+    sessionStorage.setItem('lagin_aahe_ka', 'ho');
+    setIsLoggedIn(true);
   };
 
   const handleLogout = () => {
+    sessionStorage.removeItem('lagin_aahe_ka');
     setIsLoggedIn(false);
   };
 
@@ -47,7 +57,7 @@ const App = () => {
         {isLoggedIn && (
           <Grid item xs={12}>
             <Item>
-              <Navbar onLogin={handleLogin} />
+              <Navbar onLogout={handleLogout} />
             </Item>
           </Grid>
         )}
@@ -83,6 +93,10 @@ const App = () => {
               <Route
                 path="/admin/*"
                 element={isLoggedIn ? <AdminComponents /> : ""}
+              />
+              <Route
+                path="*"
+                element={<LoginPage onLogin={handleLogin} />}
               />
             </Routes>
           </Item>

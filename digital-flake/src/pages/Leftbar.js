@@ -52,7 +52,9 @@ const Leftbar = () => {
           height: "100vh",          
           display: "flex",
           position: "fixed",
-          top: { xs: "69px", md: "69px" },          
+          top: { xs: "69px", md: "69px" },     
+          background:'yellow',     
+          width:100,
         }}
       >
         {/* all i.e. home category and product list items with their logo and inner content */}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { AppBar, Avatar, Box, Button, Container, IconButton, Menu, MenuItem, Toolbar, Tooltip, Typography, styled } from "@mui/material";
 import { Menu as Menubar } from "@mui/icons-material";
 import { Link } from "react-router-dom"; // Import Link from React Router
@@ -44,7 +44,7 @@ const Navbar = (props) => {
     if (setting === 'Logout') {
       const confirmed = window.confirm('Are you sure you want to logout?');
       if (confirmed) {
-        props.onLogin();
+        props.onLogout();
         navigate("/loginPage");
       }
     }
@@ -99,6 +99,7 @@ const Navbar = (props) => {
                       <Button key={setting} component={Link} to={`/${setting.toLowerCase()}`} sx={{ my: 2, color: "black", display: "block" }}>{setting}</Button>
                     </MenuItem>
                   ))}
+                 
                 </Menu>
               </Box>
             </Toolbar>
